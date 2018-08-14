@@ -1,0 +1,11 @@
+{
+  "name": "jokenpow-erguido",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/paulopieczarka/jokenpow-erguido.git",
+  "author": "paulopieczarka <paulopieczarka@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^6.0.0"
+  }
+}
