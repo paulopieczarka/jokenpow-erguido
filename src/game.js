@@ -1,7 +1,9 @@
 module.exports = {
   players: [],
 
+  //Player creation
   join (client, request) {
+    //Player Object
     if (this.players.length < 2) {
       const player = {
         socket: client,
@@ -9,12 +11,16 @@ module.exports = {
         answer: undefined
       }
 
+      //Socket event for a message
       player.socket.on('message', message => {
         console.log('player', player.index, ' --> ', message)
         this.play(player, message)
       })
 
+      //Push in two player
       this.players.push(player)
+
+      //Catch the socket of a client and sends a message to server
       client.send(`player${player.index}`)
       console.log(`player${player.index} joined!`)
 
@@ -23,6 +29,7 @@ module.exports = {
       }
     } else {
       console.log('Game is full!')
+      client.send('Nothing!')
     }
   },
 
@@ -62,9 +69,9 @@ module.exports = {
       return undefined
     }
 
-    return checkRule(p0, p1, ['rock', 'scissor']) ||
-      checkRule(p0, p1, ['scissor', 'paper']) ||
-      checkRule(p0, p1, ['paper', 'rock']) ||
+    return checkRule(p0, p1, ['Rock', 'Scissor']) ||
+      checkRule(p0, p1, ['Scissor', 'Paper']) ||
+      checkRule(p0, p1, ['Paper', 'Rock']) ||
       false
   }
 }
